@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --exit --experimental-modules --es-module-specifier-resolution=node test/*.mjs"
+    "test": "mocha --exit test/*.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "chai": "^5.0.0",
+    "chai": "^4.3.4",
     "chai-http": "^4.4.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
