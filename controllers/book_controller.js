@@ -11,8 +11,13 @@ exports.createBook = async (req, res) => {
 };
 
 exports.listBooks = async (req, res) => {
+  const query = {};
   try {
-    const books = await Book.find({});
+    if (req.query.title) query.title = req.query.title;
+    if (req.query.author) query.author = req.query.author;
+    if (req.query.isbn) query.isbn = req.query.isbn;
+
+    const books = await Book.find(query);
     res.status(200).send(books);
   } catch (error) {
     res.status(500).send(error);
