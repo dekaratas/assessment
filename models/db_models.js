@@ -26,4 +26,4 @@ userSchema.pre("save", async function(next) {
 const User = mongoose.model("User", userSchema);
 const Book = mongoose.model("Book", bookSchema);
 
-module.exports = { User, Book};
+module.exports = { User, Book };
