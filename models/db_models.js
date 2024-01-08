@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, unique: true},
   password: String,
   hometown: String,
+  yearOfBirth: Number
 });
 
 const bookSchema = new mongoose.Schema({

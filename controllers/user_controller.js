@@ -1,4 +1,26 @@
 const { User } = require("../models/db_models");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+
+exports.login = async(req, res) => {
+  try {
+    const user = await User.findOne({ username: req.body.username });
+    if (!user) {
+      return res.status(404).send({ error: "Login failed!" });
+    }
+
+    const isMatch = await bcrypt.compare(req.body.password, user.password);
+    if (!isMatch) {
+      return res.status(401).send({ error: "Login failed! Incorrect password!"});
+    }
+
+    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
+    res.send({ user, token });
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(400).send(error);
+  }
+}
 
 exports.createUser = async (req, res) => {
   try {

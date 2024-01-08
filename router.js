@@ -5,6 +5,7 @@ const bookController = require("./controllers/book_controller");
 router.post("/user", userController.createUser);
 router.patch("/user/:id", userController.patchUser);
 router.delete("/user/:id", userController.deleteUser);
+router.post("/user/login", userController.login);
 
 router.post("/books", bookController.createBook);
 router.get("/books", bookController.listBooks);
