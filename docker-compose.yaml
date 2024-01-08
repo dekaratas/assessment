@@ -1,0 +1,21 @@
+version: '3'
+services:
+  app:
+    container_name: assessmentapp
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://db:27017/assessmentdb
+    depends_on:
+      - db
+  db:
+    container_name: assessmentdb
+    image: mongo
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb_data:/data/db
+volumes:
+  mongodb_data:
